@@ -58,7 +58,7 @@ protocol: h2mux
 
 ingress:
   - hostname: $WEB_DOMAIN
-    service: http://localhost:443
+    service: http://localhost:80
 $SSH_DISABLE  - hostname: $SSH_DOMAIN
 $SSH_DISABLE    service: ssh://localhost:22
   - hostname: $DATA_DOMAIN
