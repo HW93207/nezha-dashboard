@@ -1,6 +1,6 @@
 FROM ghcr.io/naiba/nezha-dashboard
 
-EXPOSE 22 80 443
+EXPOSE 80
 
 WORKDIR /dashboard
 
