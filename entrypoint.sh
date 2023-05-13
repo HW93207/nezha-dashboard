@@ -5,7 +5,7 @@ info() { echo -e "\033[32m\033[01m$*\033[0m"; }   # 绿色
 hint() { echo -e "\033[33m\033[01m$*\033[0m"; }   # 黄色
 
 # 如参数不齐全，容器退出，另外处理某些环境变量填错后的处理
-[[ -z "$GH_USER" || -z "$GH_CLIENTID" || -z "$GH_CLIENTSECRET" || -z "$ARGO_JSON" || -z "$WEB_DOMAIN" || -z "$DATA_DOMAIN" ]] && error " There are variables that are not set. "
+[[ -z "$GH_USER" || -z "$GH_CLIENTID" || -z "$GH_CLIENTSECRET" || -z "$ARGO_JSON" || -z "$WEB_DOMAIN" || -z "$WEB_GH_USER" || -z "$DATA_DOMAIN" ]] && error " There are variables that are not set. "
 grep -qv '"' <<< $ARGO_JSON && ARGO_JSON=$(sed 's@{@{"@g;s@[,:]@"\0"@g;s@}@"}@g' <<< $ARGO_JSON)  # 没有了"的处理
 [ -n "$GH_REPO" ] && grep -q '/' <<< $GH_REPO && GH_REPO=$(awk -F '/' '{print $NF}' <<< $GH_REPO)  # 填了项目全路径的处理
 
@@ -23,7 +23,7 @@ site:
   viewpassword: ""
 oauth2:
   type: github
-  admin: $GH_USER
+  admin: $WEB_GH_USER
   clientid: $GH_CLIENTID
   clientsecret: $GH_CLIENTSECRET
 httpport: 80
