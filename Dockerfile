@@ -1,7 +1,6 @@
 FROM ghcr.io/naiba/nezha-dashboard
 
-EXPOSE 80
-ENV PORT 80
+EXPOSE 8080
 
 WORKDIR /dashboard
 
