@@ -61,10 +61,10 @@ ingress:
     service: http://localhost:80
 $SSH_DISABLE  - hostname: $SSH_DOMAIN
 $SSH_DISABLE    service: ssh://localhost:22
-  - hostname: $DATA_DOMAIN
-    service: https://localhost:443
-    originRequest:
-      noTLSVerify: true
+  #- hostname: $DATA_DOMAIN
+  #  service: https://localhost:443
+  #  originRequest:
+  #    noTLSVerify: true
   - service: http_status:404
 EOF
 
@@ -91,8 +91,8 @@ http {
   }
 
   server {
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
+    listen 80;
+    listen [::]:80;
     server_name $DATA_DOMAIN;
 
     ssl_certificate          /dashboard/nezha.pem;
